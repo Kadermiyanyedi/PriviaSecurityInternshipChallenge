@@ -1,1 +1,23 @@
-comment_add test
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-l col-sm-offset-3">
+            <!-- Form: commentAdd  -->
+            <form method="POST">
+                {% csrf_token %}
+                {{form | crispy}}
+                <br>
+                <span class="input-group-btn">
+                    <button style="background-color:  rgb(170, 214, 207);color:rgb(19, 18, 17)" type="submit"
+                        class="btn btn-dark" id="add-btn"><i class="fa fa-plus-circle"></i>
+                        Add comment for this blog post
+                    </button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

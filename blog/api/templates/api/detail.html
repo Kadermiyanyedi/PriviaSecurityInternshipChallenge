@@ -1,1 +1,38 @@
-detail html
+{% extends 'base/header.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col md-16 align-self-center">
+            {% if post.image %}
+            <img class="" src={{ post.image.url }} style="width: 400px;height: 350px;">
+            {% endif %}
+            <h2 style="color: rgb(141, 10, 91);">{{ post.title }}</h2>
+            <strong style="color:rgb(6, 6, 85)" class="taskDate"><i class="fa fa-calendar"></i>
+                By {{ post.author }} |{{ post.date | date }} </strong><br><br>
+            <hr>
+            <p style="color:black">{{ post.detail }}</p>
+            <br>
+        </div>
+
+    </div>
+    <br><br>
+    <hr>
+    <h3>Yorum Ekle:</h3>
+    {% include 'api/comment_add.html' %}
+    <hr />
+
+    <h3>Yorumlar:</h3>
+    {% for comment in post.comments.all %}
+    <h4>By {{ comment.comment_author}} | <small>{{ comment.date|date}}</small></h4>
+    <p>{{ comment.comment_text|linebreaks }}</p>
+    <hr>
+    {% empty %}
+    <p>No comments here yet :(</p>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

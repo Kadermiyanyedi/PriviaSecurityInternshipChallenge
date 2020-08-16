@@ -1,1 +1,24 @@
-edit html
+{% extends 'base/header.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-l col-sm-offset-3">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form | crispy}}
+                <br>
+                <span class="input-group-btn">
+                    <button style="background-color: rgb(6, 50, 63);color:antiquewhite" type="submit"
+                        class="btn btn-dark" id="add-btn">
+                        <span><i class="fa fa-edit"></i> Update </span>
+                    </button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

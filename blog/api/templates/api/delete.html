@@ -1,0 +1,22 @@
+{% extends 'base/header.html' %}
+{% block content %}
+<div class="container">
+    <div class="row"></div>
+    <br />
+    <div class="row">
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="alert alert-warning">
+                        Are you sure you want to delete {{ object }}?
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">
+                    <span><i class="fa fa-trash"> Sil </i></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

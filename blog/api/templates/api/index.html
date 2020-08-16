@@ -1,1 +1,97 @@
-deneme test
+{% extends 'base/header.html' %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-l col-sm-offset-3">
+            <a href="{% url 'add' %}"><button style="background-color:  rgb(240, 208, 228);color:rgb(31, 30, 29)"
+                    type="submit" class="btn btn-dark" id="add-btn"> <i class="fa fa-plus-circle"></i> ADD NEW POST
+                </button>
+            </a>
+        </div>
+    </div><br>
+    <hr>
+    {% for post in blog_list %}
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-6 col-md-offset-6">
+            <ul class="list-group list-group-flush">
+                <li class="card mb-3 ">
+                    {% if post.image %}
+                    <img class="card-img-top" src={{ post.image.url }}>
+                    {% endif %}
+                    <div class=" card-header" role="alert">
+                        <a href="{% url 'detail' post.id %}">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                        </a>
+
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{ post.detail|linebreaks|truncatewords:20 }}
+                        </p>
+                        <strong style="color:rgb(6, 6, 85)" class="taskDate"><i class="fa fa-calendar"></i>
+                            {{ post.date| date }}</strong>
+                    </div>
+                    <div class="row-md-1 row-xs-1 row-sm-1">
+                        <a href="{% url 'update' post.id %}">
+                            <button style="background-color: rgb(205, 196, 245); color: rgb(27, 26, 25); " type="button"
+                                class="btn btn-dark">
+                                <span><i class="fa fa-edit"></i> Update </span>
+                            </button>
+                        </a>
+                        <a href="{% url 'delete' post.id %}">
+                            <button style="background-color: rgb(245, 183, 183); color: rgb(22, 21, 20);" type="button"
+                                class="btn btn-dark">
+                                <span><i class="fa fa-trash"> Delete </i></span>
+                            </button>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    {% endfor %}
+    <div class="row justify-content-md-center">
+        <div class="col-sm-l col-sm-offset-3">
+            <nav aria-label="Page navigation example">
+                {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="?page={{page_obj.previous_page_number}}{% if request.GET.q %}&q={{ q }}{% endif %}">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class=" page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="page-item"><a class="page-link active">{{ i }}</a></li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{page_obj.next_page_number}}{% if request.GET.q %}&q={{ q }}{% endif %}"
+                            class=" page-link">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
