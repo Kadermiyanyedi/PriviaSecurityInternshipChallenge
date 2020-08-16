@@ -1,9 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Blog(models.Model):
-    id = models.IntegerField(primary_key=True)
-    author = models.CharField(max_length=50)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
     title = models.CharField(max_length=50)
     detail = models.TextField()
     image = models.ImageField(blank=True)
@@ -14,7 +14,9 @@ class Blog(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        "api.Blog", on_delete=models.CASCADE, related_name="comments"
+    )
     comment_text = models.TextField()
     comment_author = models.CharField(max_length=50)
     date = models.DateTimeField(auto_now_add=True)
