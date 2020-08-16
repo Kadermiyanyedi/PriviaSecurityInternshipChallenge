@@ -38,3 +38,6 @@ If you want create a new super user :
 `python manage.py runserver`
 
 Go to localhost:8000 in your browser
+
+### Run Test
+`python manage.py test api`
