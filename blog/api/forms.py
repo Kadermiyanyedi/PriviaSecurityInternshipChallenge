@@ -11,5 +11,5 @@ class BlogModelForm(forms.ModelForm):
 class CommentModelForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ["comment_text", "comment_author"]
+        fields = ["comment_author", "comment_text"]
 
