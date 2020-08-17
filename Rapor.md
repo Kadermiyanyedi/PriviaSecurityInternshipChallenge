@@ -25,4 +25,4 @@
 
 * Projeme aynı zamanda django rest framework ekledim. DRF frontend kısmında api isteklerinde bulunurken kolaylık sağlayacak.
 
-* Ayrıca projemde swagger ekledim. localhost:8000/swagger adresine gidildiğinde api ile ilgili yapılabilecek http istekleri, modeller ve içerisindeki fieldlar hakkında bilgi edinebilir ve postmanücurl gibi başka bir araç kullanmadan http isteklerinde bulunup apiyi test edebilirsiniz. Farklı bir araç kullanmaktansa swagger ile test yapmak bana daha kullanışlı gelmekte ve api hakkında geniş bilgiler sunmaktadır.
+* Ayrıca projemde swagger ekledim. localhost:8000/swagger adresine gidildiğinde api ile ilgili yapılabilecek http istekleri, modeller ve içerisindeki fieldlar hakkında bilgi edinebilir ve postman,curl gibi başka bir araç kullanmadan http isteklerinde bulunup apiyi test edebilirsiniz. Farklı bir araç kullanmaktansa swagger ile test yapmak bana daha kullanışlı gelmekte ve api hakkında geniş bilgiler sunmaktadır.

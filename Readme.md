@@ -4,8 +4,8 @@
 
 ### Project Clone
 
-`git clone git@github.com:Kadermiyanyedi/PriviaSecurityInternshipChallenge.git`
-`cd PriviaSecurityInternshipChallenge`
+- `git clone git@github.com:Kadermiyanyedi/PriviaSecurityInternshipChallenge.git`
+- `cd PriviaSecurityInternshipChallenge`
 ---
 ### Create a virtual environment to isolate our package dependencies locally
 
