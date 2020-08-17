@@ -11,7 +11,7 @@ class RenewBookFormTest(TestCase):
             author=author, title="text.py", detail="test.py deneme"
         )
 
-    def test_commenr_create(self):
+    def test_comment_create(self):
         author = User.objects.create(username="admin", password="admin")
         post = Blog.objects.create(
             author=author, title="text.py", detail="test.py deneme"
@@ -43,7 +43,7 @@ class RenewBookFormTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_exists_at_desired_location(self):
-        response = self.client.get("/add/")
+        response = self.client.get("/swagger/")
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):

@@ -40,8 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "crispy_forms",
+    "rest_framework",
+    "drf_yasg",
 ]
-
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

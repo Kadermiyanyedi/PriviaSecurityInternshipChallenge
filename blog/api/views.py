@@ -6,13 +6,31 @@ from django.views.generic import (
     DeleteView,
     TemplateView,
 )
-from .models import Blog
+from .models import Blog, Comment
 from .forms import BlogModelForm, CommentModelForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
+from rest_framework import viewsets
+from .serializers import BlogSerializer, UserSerializer, CommentSerializer
+from django.contrib.auth.models import User
+
+
+class BlogViewSet(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class SearchView(TemplateView):
