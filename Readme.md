@@ -22,7 +22,6 @@
 ### Install Django and Django REST framework into the virtual environment
 - `pip install -r requirements.txt`
 
----
 ### Migrate Database
 - `cd blog`
 - `python manage.py migrate`
