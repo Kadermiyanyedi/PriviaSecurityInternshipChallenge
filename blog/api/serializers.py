@@ -4,10 +4,14 @@ from django.contrib.auth.models import User
 
 
 class BlogSerializer(serializers.ModelSerializer):
+    comments = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Blog
-        fields = ("id", "author", "title", "detail", "image", "date")
+        fields = ("id", "author", "title", "detail", "image", "date", "comments")
 
+    def get_comments(self, obj):
+        result = Comment.objects.filter(post_id=obj.id).values_list('comment_author', flat=True)
+        return result
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
